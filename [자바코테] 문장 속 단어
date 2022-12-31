@@ -1,0 +1,33 @@
+/*
+
+import java.util.*;
+
+public class Main{
+	
+	public String solution(String str) {
+		String answer="";
+		String[] tmp=new String[] {""};
+		String[] list=str.split(" ");
+		
+		for (int i=0;i<list.length;i++) {
+			if (list[i].length()>tmp[0].length()) {
+				tmp[0]=list[i];
+			}
+		}
+		
+		answer=tmp[0];
+		return answer;
+	}
+	
+	public static void main(String[] args) {
+		Main T=new Main();
+		
+		Scanner in=new Scanner(System.in);
+		String str=in.nextLine();
+		System.out.println(T.solution(str));
+	}
+	
+}
+
+
+*/

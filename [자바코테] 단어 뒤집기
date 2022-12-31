@@ -1,0 +1,24 @@
+import java.util.*;
+
+public class Main{
+	
+	public static void main(String[] args) {
+		
+		Scanner in=new Scanner(System.in);
+		
+		int n=in.nextInt();
+		ArrayList<String> tmp=new ArrayList<String>();
+		for (int i=0;i<n;i++) {
+			String str=in.next();
+			tmp.add(str);
+		}
+		
+		for (String x: tmp) {
+			String tmp_answer="";
+			for (int i=0;i<x.length();i++) {
+				tmp_answer=x.charAt(i)+tmp_answer;
+			}
+			System.out.println(tmp_answer);
+		}
+	}
+}

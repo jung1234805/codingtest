@@ -1,0 +1,34 @@
+import java.util.*;
+
+public class Main{
+	
+	public String solution(String str) {
+		String answer="";
+		
+		int lp=0;
+		int rp=str.length()-1;
+		char[] str_arr=str.toCharArray();
+		while(lp<rp) {
+			if ((65<=str_arr[lp] && str_arr[lp]<=90) || (97<=str_arr[lp] && str_arr[lp]<=122) ) {
+				char tmp=str_arr[lp];
+				str_arr[lp]=str_arr[rp];
+				str_arr[rp]=tmp;
+			}
+			
+			lp=lp+1;
+			rp=rp-1;
+		}
+		answer=String.valueOf(str_arr);
+		return answer;
+	}
+	
+	public static void main(String[] args) {
+		Main T=new Main();
+		
+		Scanner in= new Scanner(System.in);
+		String str=in.next();
+		
+		System.out.println(T.solution(str));
+	}
+	
+}

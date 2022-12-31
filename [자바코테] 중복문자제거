@@ -1,0 +1,30 @@
+import java.util.*;
+
+public class Main{
+	
+	public String solution(String str) {
+		String answer="";
+		
+		for (int i=0;i<str.length();i++) {
+			char x=str.charAt(i);
+			String t=String.valueOf(x);
+			
+			if (answer.contains(t)) continue;
+			else answer=answer+t;
+		}
+		
+		
+		return answer;
+	}
+	
+	public static void main(String[] args) {
+		Main T=new Main();
+		
+		Scanner in=new Scanner(System.in);
+		
+		String str=in.next();
+		
+		System.out.println(T.solution(str));
+	}
+	
+}
