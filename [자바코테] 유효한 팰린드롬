@@ -1,0 +1,40 @@
+import java.util.*;
+import java.util.regex.Pattern;
+
+public class Main{
+	
+	public String solution(String str) {
+		String answer="";
+		
+		str=str.toLowerCase();
+		char [] tmp=str.toCharArray();
+		String reverse="";
+		String forward="";
+		for (int i=0;i<str.length();i++) {
+			String t=String.valueOf(tmp[i]);
+			if (Pattern.matches("^[a-zA-Z]*$",t)) {
+				reverse=t+reverse;
+				forward=forward+t;
+			}
+			else {
+				continue;
+			}
+			
+		}
+		if (reverse.equals(forward)) answer="YES";
+		else answer="NO";
+		
+		return answer;
+	}
+	
+	public static void main(String[] args) {
+		Main T=new Main();
+		
+		Scanner in=new Scanner(System.in);
+		
+		String str=in.nextLine();
+		
+		System.out.println(T.solution(str));
+	}
+	
+}
