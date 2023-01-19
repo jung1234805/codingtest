@@ -1,0 +1,137 @@
+import java.util.Scanner;
+public class MinerGame {
+		public static void main(String[] args) {
+		
+		Scanner sc=new Scanner(System.in);
+		
+		int []dx={-1,0, 1, -1,1,-1,0,1};
+		int []dy={-1,-1,-1, 0,0,1,1,1};
+		int start_x = 0;
+		int start_y = 0;
+		int n=sc.nextInt();
+		int[][] map=new int[n][n];
+		for(int i=0;i<n;i++) {
+			for(int j=0;j<n;j++) {
+				map[i][j]=sc.nextInt();
+				if (map[i][j]==0) {
+					start_x=j;
+					start_y=i;
+				}
+			}
+		}
+		
+		int m=sc.nextInt();
+		char [] move=new char[m];
+		for (int i=0;i<m;i++) {
+			move[i]=sc.next().charAt(0);
+		}
+		
+		int block=0;
+		int tmp_x;
+		int tmp_y;
+		for (int j=0;j<m;j++) {
+			char step=move[j];
+			
+			if (step=='D') {
+				tmp_x=dx[6];
+				tmp_y=dy[6];
+				int point=map[start_y+tmp_y][start_x+tmp_x];
+				if (point>0) {
+					point-=1;
+					map[start_y+tmp_y][start_x+tmp_x]=point;
+					if (point==0) {
+						block+=1;
+						start_y=start_y+tmp_y;
+						start_x=start_x+tmp_x;
+					}
+				}
+				else {
+					start_y=start_y+tmp_y;
+					start_x=start_x+tmp_x;
+				}
+			}
+			else if(step=='R') {
+				tmp_x=dx[4];
+				tmp_y=dy[4];
+				int point=map[start_y+tmp_y][start_x+tmp_x];
+				if (point>0) {
+					point-=1;
+					map[start_y+tmp_y][start_x+tmp_x]=point;
+					
+					if (point==0) {
+						block+=1;
+						start_y=start_y+tmp_y;
+						start_x=start_x+tmp_x;
+					}
+				}
+				else {
+					start_y=start_y+tmp_y;
+					start_x=start_x+tmp_x;
+				}
+			}
+			
+			else if(step=='L') {
+				tmp_x=dx[3];
+				tmp_y=dy[3];
+				int point=map[start_y+tmp_y][start_x+tmp_x];
+				if (point>0) {
+					point-=1;
+					map[start_y+tmp_y][start_x+tmp_x]=point;
+					
+					if (point==0) {
+						block+=1;
+						start_y=start_y+tmp_y;
+						start_x=start_x+tmp_x;
+					}
+				}
+				else {
+					start_y=start_y+tmp_y;
+					start_x=start_x+tmp_x;
+				}
+			}
+			
+			else if(step=='U') {
+				tmp_x=dx[1];
+				tmp_y=dy[1];
+				int point=map[start_y+tmp_y][start_x+tmp_x];
+				if (point>0) {
+					point-=1;
+					map[start_y+tmp_y][start_x+tmp_x]=point;
+					
+					if (point==0) {
+						block+=1;
+						start_y=start_y+tmp_y;
+						start_x=start_x+tmp_x;
+					}
+				}
+				else {
+					start_y=start_y+tmp_y;
+					start_x=start_x+tmp_x;
+				}
+			}
+			
+			else if(step=='X') {
+				for (int o=0;o<dx.length;o++) {
+					tmp_x=dx[o];
+					tmp_y=dy[o];
+					int x=tmp_x+start_x;
+					int y=tmp_y+start_y;
+					
+					if(x>-1 && y>-1 && x<n &&y<n) {
+						int point=map[y][x];
+						if (point>0) {
+							block+=1;
+							map[y][x]=0;
+						}
+					}
+				}
+			}
+			
+			
+		}
+		System.out.println("광부 위치 : "+"("+start_y+","+start_x+")");
+		System.out.println("부순 암석 개수 : "+block);
+
+	}
+
+}
